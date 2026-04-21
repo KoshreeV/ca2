@@ -5,7 +5,7 @@ const Stats = () => {
   const { activities } = useActivity();
 
   const validActivities = activities.filter(
-    (a) => a.steps > 0 && a.caloriesBurned > 0 && a.workoutMinutes > 0 && typeof a.goalAchieved === "boolean"
+    (a) => a.activityId && a.name && typeof a.goalAchieved === "boolean"
   );
 
   const goalAchievedCount = validActivities.filter((a) => a.goalAchieved).length;

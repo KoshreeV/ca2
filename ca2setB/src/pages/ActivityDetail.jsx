@@ -6,7 +6,7 @@ const ActivityDetail = () => {
   const { id } = useParams();
   const { activities } = useActivity();
 
-  const activity = activities.find((a) => a.activityid === id);
+  const activity = activities.find((a) => a.activityId === parseInt(id));
 
   if (!activity) return <div>Activity not found</div>;
 

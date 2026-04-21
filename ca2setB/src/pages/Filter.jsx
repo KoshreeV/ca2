@@ -6,7 +6,7 @@ const Filter = () => {
   const [filter, setFilter] = useState("all");
 
   const validActivities = activities.filter(
-    (a) => a.steps > 0 && a.caloriesBurned > 0 && a.workoutMinutes > 0 && typeof a.goalAchieved === "boolean"
+    (a) => a.activityId && a.name && typeof a.goalAchieved === "boolean"
   );
 
   const filteredActivities = validActivities.filter((a) => {
@@ -18,13 +18,13 @@ const Filter = () => {
   return (
     <div>
       <h1>Filter Activities</h1>
-      <select onChange={(e) => setFilter(e.target.value)} value={filter}>
+      <select name="activity-filter" onChange={(e) => setFilter(e.target.value)} value={filter}>
         <option value="all">All</option>
         <option value="achieved">Goal Achieved</option>
         <option value="not-achieved">Goal Not Achieved</option>
       </select>
       {filteredActivities.map((activity) => (
-        <div key={activity.activityid} data-testid="activity-item">
+        <div key={activity.activityId} data-testid="activity-item">
           <h3>{activity.name}</h3>
           <p>Steps: {activity.steps}</p>
           <p>Calories: {activity.caloriesBurned}</p>

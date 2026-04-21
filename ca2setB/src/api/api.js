@@ -19,5 +19,6 @@ export const getDataset = async (token, dataUrl) => {
     },
   });
   
+  console.log("Raw API response:", data);
   return data;
 };

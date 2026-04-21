@@ -6,7 +6,7 @@ const Activities = () => {
   const { activities, toggleGoalAchieved } = useActivity();
 
   const validActivities = activities.filter(
-    (a) => a.steps > 0 && a.caloriesBurned > 0 && a.workoutMinutes > 0 && typeof a.goalAchieved === "boolean"
+    (a) => a.activityId && a.name && typeof a.goalAchieved === "boolean"
   );
 
   const handleToggle = (id, steps) => {
@@ -21,8 +21,8 @@ const Activities = () => {
       <div data-testid="total-activities">{validActivities.length}</div>
       {validActivities.length === 0 && <p>Loading or no valid data...</p>}
       {validActivities.map((activity) => (
-        <div key={activity.activityid} data-testid="activity-item">
-          <Link to={`/activities/${activity.activityid}`}>
+        <div key={activity.activityId} data-testid="activity-item">
+          <Link to={`/activities/${activity.activityId}`}>
             <h3>{activity.name}</h3>
           </Link>
           <p>Steps: {activity.steps}</p>
@@ -30,7 +30,7 @@ const Activities = () => {
           <p>Minutes: {activity.workoutMinutes}</p>
           <p>Date: {activity.date}</p>
           <p>Goal Achieved: {activity.goalAchieved ? "Yes" : "No"}</p>
-          <button onClick={() => handleToggle(activity.activityid, activity.steps)}>Toggle Goal</button>
+          <button onClick={() => handleToggle(activity.activityId, activity.steps)}>Toggle Goal</button>
         </div>
       ))}
     </div>

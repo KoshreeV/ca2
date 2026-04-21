@@ -11,7 +11,7 @@ const ActivityReducer = (state, action) => {
       return {
         ...state,
         activities: state.activities.map((a) =>
-          a.activityid === action.payload ? { ...a, goalAchieved: !a.goalAchieved } : a
+          a.activityId === action.payload ? { ...a, goalAchieved: !a.goalAchieved } : a
         ),
       };
 
