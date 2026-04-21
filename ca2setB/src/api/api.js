@@ -16,9 +16,8 @@ export const getDataset = async (token, dataUrl) => {
   const { data } = await axios.get(`${BASE_URL}${dataUrl}`, {
     headers: {
       Authorization: `Bearer ${token}`,
-      
     },
   });
   
-  return data.data;
+  return data;
 };

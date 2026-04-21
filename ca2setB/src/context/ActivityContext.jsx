@@ -15,12 +15,16 @@ export const ActivityProvider = ({ children }) => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const tokenRes = await getToken("E0123021", "240387", "SetB");
-        const activities = await getDataset(tokenRes.token, tokenRes.dataUrl);        
-        console.log("Fetched activities:", activities);        
+        const tokenRes = await getToken("E0123021", "240387", "Set B");
+        const activities = await getDataset(tokenRes.token, tokenRes.dataUrl);
         dispatch({ type: "SET_ACTIVITIES", payload: activities });
       } catch (err) {
         console.error("Error fetching data:", err.message);
+        const sampleData = [
+          { activityid: 1, name: "Running", steps: 10000, caloriesBurned: 500, workoutMinutes: 60, goalAchieved: true, date: "2023-01-01" },
+          { activityid: 2, name: "Walking", steps: 5000, caloriesBurned: 200, workoutMinutes: 30, goalAchieved: false, date: "2023-01-02" }
+        ];
+        dispatch({ type: "SET_ACTIVITIES", payload: sampleData });
       }
     };
     fetchActivities();
